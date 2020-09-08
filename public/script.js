@@ -1,11 +1,12 @@
-const socket = io('/');
-const videoGrid = document.getElementById('video-grid');
 
-var peer = new Peer(undefined, {
-    path: '/peerjs',
-    host: '/',
-    port: '3000'
-});
+
+const socket = io('/')
+const videoGrid = document.getElementById('video-grid')
+const peer = new Peer(undefined, {
+  path: '/peerjs',
+  host: '/',
+  port: '3000'
+})
 
 
 let myVideoStream
@@ -49,8 +50,6 @@ const connectToNewUser = (userId, stream) => {
   })
 }
 
-
-
 const addVideoStream = (video, stream) => {
     video.srcObject = stream;
     video.addEventListener('loadedmetadata', () =>{
@@ -58,3 +57,17 @@ const addVideoStream = (video, stream) => {
     })
     videoGrid.append(video);
 }
+
+let text = $('input')
+
+$('html').keydown((e)=> {
+    if(e.which == 13 && text.val().length !== 0) {
+      console.log(text.val())
+      socket.emit('message', text.val())
+      text.val('');
+    }
+})
+  
+socket.on('createMessage', message  => {
+    console.log('this is coming from server', message)
+})
