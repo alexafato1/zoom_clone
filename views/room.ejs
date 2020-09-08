@@ -30,13 +30,13 @@
           </div>
           <div class="main_controls">
             <div class='main_controls_block'>
-              <div class='main_controls_button'>
+              <div onclick="muteUnmute()"  class='main_controls_button main_mute_button'>
                 <i class="fas fa-microphone-alt"></i>
                 <span>Mute</span>
               </div>
-              <div class='main_controls_button'>
+              <div onclick='stopVideo()' class='main_controls_button main_video_button'>
                 <i class="fas fa-video"></i>
-                <span>Stop Video</span>
+                <span>Video</span>
               </div>
 
               <div class='main_controls_button'>
@@ -70,7 +70,7 @@
             
       </div>
       <div class='main_chat_window'>
-        <ul>
+        <ul class='messages'>
 
         </ul>
    </div>
